@@ -1,0 +1,7 @@
+__pycache__/
+.fc_profil/
+*.FCBak
+*.FCStd1
+bilder/log.txt
+druck/*/manifest.json
+build_log.txt

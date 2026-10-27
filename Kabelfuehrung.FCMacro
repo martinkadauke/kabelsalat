@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+# Kabelführung: legt im aktiven Dokument die Tabelle "Parameter" an (falls noch keine da ist) und dazu
+# eine Kabelkachel, einen Kreisverkehr und eine Leerkachel, alle an die Tabelle gebunden.
+# Werte in der Tabelle ändern -> Teile passen sich an. Export: Teil markieren, Datei > Exportieren > STL.
+import FreeCAD as App
+import FreeCADGui as Gui
+
+import kabelfuehrung as kf
+
+objs = kf.neues_set(App.ActiveDocument)
+Gui.SendMsgToActiveView("ViewFit")

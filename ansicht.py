@@ -255,15 +255,26 @@ def nur_ansicht(doc):
     teil("Z_Einspur", kf.baue_kachel(p1), FARBE["Kabelkachel"], -200)
     teil("Z_Kabel_Einspur", Part.makeCylinder(r, W + 24, V(-12, ys1[0], t + r), V(1, 0, 0)), FARBE["Kabel"], -200)
 
-    # Etagenkachel im Schnitt durch einen Außenhaken und durch den Schraubenschacht, mit Kabeln
+    # Etagenkachel geschnitten: durch einen Außenhaken (Haken vom Kiel) und durch den Mittelhaken (Haken von der
+    # Außenwand), nebeneinander, dazu ein Schnitt in 3D durch die Mitte. Die Kabel liegen so, wie sie sitzen.
     e = kf.baue_etagenkachel()
-    kabel = None
-    for _, _, d, y, zk in kf.etagen_kabel(p):
-        z1 = Part.makeCylinder(d / 2.0, xa + 12, V(-12, y, zk), V(1, 0, 0))
-        kabel = z1 if kabel is None else kabel.fuse(z1)
-    for name, x, dy in (("Z_EtagenSchnitt", xa, -1000), ("Z_EtagenMitte", xm, -1200)):
-        teil(name, e.cut(Part.makeBox(W + 40, H + 40, 80, V(x, -20, -5))), FARBE["Etagenkachel"], dy)
-        teil(name + "_Kabel", kabel, FARBE["Kabel"], dy)
+    aussen, (xmid, lb) = kf.etagen_lagen(p)
+    xe_ = aussen[0][0]
+
+    def kabelbuendel(x0, x1):
+        k = None
+        for _, _, d, y, zk in kf.etagen_kabel(p):
+            z1 = Part.makeCylinder(d / 2.0, x1 - x0, V(x0, y, zk), V(1, 0, 0))
+            k = z1 if k is None else k.fuse(z1)
+        return k
+
+    teil("Z_EtagenSchnitt", e.cut(Part.makeBox(W + 40, H + 40, 80, V(xe_, -20, -5))), FARBE["Etagenkachel"], -1000)
+    teil("Z_EtagenSchnitt_Kabel", kabelbuendel(-12, xe_), FARBE["Kabel"], -1000)
+    scheibe = e.common(Part.makeBox(lb / 2.0, H + 40, 80, V(xmid - lb / 2.0, -20, -5)))
+    teil("Z_EtagenMitte", scheibe, FARBE["Etagenkachel"], -1000 - H - 18)
+    teil("Z_EtagenMitte_Kabel", kabelbuendel(xmid - lb / 2.0, xmid), FARBE["Kabel"], -1000 - H - 18)
+    teil("Z_Etagen3D", e.cut(Part.makeBox(W + 40, H + 40, 80, V(xmid, -20, -5))), FARBE["Etagenkachel"], -1300)
+    teil("Z_Etagen3D_Kabel", kabelbuendel(-12, xmid), FARBE["Kabel"], -1300)
 
     def bm(a, b):
         w = {"A_Etagen": len(a), "B_Etagen": len(b)}
@@ -307,9 +318,10 @@ AUFNAHMEN = [
     ("etagen_iso", ("Etagenkachel", "Kabel_Etage"), (-0.55, -1.0, 0.8), (0, 0, 1), 0.72),
     ("etagen_leer_iso", ("Etagenkachel",), (-0.55, -1.0, 0.8), (0, 0, 1), 0.72),
     ("etagen_schnitt", ("Z_EtagenSchnitt",), (1, 0, 0), (0, 0, 1), 0.66),
-    ("etagen_schnitt_montiert", ("Z_EtagenSchnitt",), (1, 0, 0), (0, 0, -1), 0.66),
+    ("etagen_vergleich_montiert", ("Z_EtagenSchnitt", "Z_EtagenMitte"), (1, 0, 0), (0, 0, -1), 0.9),
+    ("etagen_vergleich", ("Z_EtagenSchnitt", "Z_EtagenMitte"), (1, 0, 0), (0, 0, 1), 0.9),
     ("etagen_schnitt_schraeg", ("Z_EtagenSchnitt",), (1, -0.55, 0.45), (0, 0, 1), 0.7),
-    ("etagen_schnitt_schacht", ("Z_EtagenMitte",), (1, -0.35, 0.55), (0, 0, 1), 0.7),
+    ("etagen_mitte_schraeg", ("Z_Etagen3D",), (1, -0.35, 0.55), (0, 0, 1), 0.7),
     ("etagen_oben", ("Etagenkachel",), (0, 0, 1), (0, 1, 0), 0.72),
     ("etagen_reihe", ("C_", "Kabel_C"), (-0.4, -1.0, 0.75), (0, 0, 1), 0.78),
     ("gemischt_oben", ("Z_Mix",), (0, 0, 1), (0, 1, 0), 0.85),

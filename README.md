@@ -12,19 +12,19 @@ also rotated by 90°.
 | Part | What it does |
 |------|--------------|
 | **Kabelkachel** (flat tile) | Two cable lanes. Short hooks at the ends, a long hook from the other side in the middle, so the cable is held from both sides. |
-| **Etagenkachel** (double/triple decker) | Two "trees" back to back on a solid keel, up to three cables stacked on each side. Every level has its own cable diameter. |
+| **Etagenkachel** (double/triple decker) | Two "trees" with up to three cables stacked on each side. Every level has its own cable diameter. Like on the flat tile, the hooks alternate: at both ends they come from solid keel blocks in the middle, the middle hook comes from an outer wall. |
 | **Kreisverkehr** (roundabout) | A post with a rim to lead cables around corners and into branches. |
 | **Leerkachel** (blank tile) | Plain plate for crossings and gaps. |
 
-The screw always sits in the middle of the tile. On the decker it goes through an 8 mm shaft in the keel.
+The screw always sits in the middle of the tile. On the decker it sits in the open gap between the two trees.
 
-![Decker cross-section as mounted, desk on top: 4/6/4 mm on the left, 10/10/10 mm on the right](bilder/etagen_schnitt_montiert.png)
+![Decker cut through an end hook (left) and through the middle hook (right), as mounted with the desk on top: 4/6/4 mm and 10/10/10 mm](bilder/etagen_vergleich_montiert.png)
 
 ## Printing
 
 Ready-made STLs for 4, 6, 8 and 10 mm cables (flat, double and triple decker), plus roundabout and blank tile,
-are in [`druck/v3`](druck/v3). The print guide with the full parts list, a test print and mounting notes is in
-German: [`druck/v3/DRUCKEN.md`](druck/v3/DRUCKEN.md).
+are in [`druck/v4`](druck/v4). The print guide with the full parts list, a test print, how to lay the cables in
+and mounting notes is in German: [`druck/v4/DRUCKEN.md`](druck/v4/DRUCKEN.md).
 
 Short version:
 - print as the STL comes, plate on the bed, **no supports**
@@ -53,28 +53,35 @@ useful ones:
 
 ## How it works
 
-- **Click fit:** between the hook lip and a low rail opposite it there is a window 0.4 mm narrower than the
+- **Click fit (flat tile):** between the hook lip and a low rail opposite it there is a window 0.4 mm narrower than the
   cable. The cable is pushed through it and stays in.
 - **No supports:** the lip has a 45° wedge under it and only 3 to 5 mm of horizontal overhang.
-- **Decker:** each level stands on the keel or on the lip of the level below, and the rail of the next level
-  sits flush on that lip. Lower levels lie further out, so every cable can be clicked in from the side without
-  another level in the way.
+- **Holding the cable:** what really keeps a cable in is that the hooks alternate. The end hooks wrap around it
+  from one side and the middle hook from the other, so it cannot leave in any direction without bending.
+  A version of the decker with all hooks on one side was printed and did not hold.
+- **Decker:** the cables of a tree lie straight above each other, each level rests on the lips of the level
+  below. A cable is slid in from outside at the end hooks and from the middle gap at the middle hook. For that
+  it has to bend inwards briefly, about 0.8 × its diameter (8 mm for a 10 mm cable). The decker has no click
+  rail, the cable is held by the alternating hooks alone.
 - **Snap clips:** a springy prong with a barb and a slit on +X and +Y, matching pockets on −X and −Y. Tiles
   are pressed together from the front (towards the desk).
 
 `build.py` (run with `freecadcmd`) builds every part of the print set and checks it: the part is one valid
-solid, the cable lies free in its channel and cannot be lifted straight out, the click window has the target
-size, the insertion path of each level is free, and all connector pairings have 0.2 mm clearance and lock.
+solid, the cable lies free in its channel and cannot be lifted straight out, the click window of the flat tile
+has the target size, every decker cable is captured on both sides and can be laid in at the end and middle
+hooks, and all connector pairings have 0.2 mm clearance and lock.
 The results are in [`pruefbericht.txt`](pruefbericht.txt). `ansicht.sh` takes the screenshots in `bilder/` and
 saves the FCStd.
 
 ## Status
 
-The first version of the flat tile and the roundabout (6 mm) has been printed: clips and click fit work.
-The 72 × 72 mm parts and the decker tiles of v3 have not been test-printed yet.
+- The first version of the flat tile and the roundabout (6 mm) has been printed: clips and click fit work.
+- A v3 triple decker was printed. Its one-sided hooks did not hold the cable.
+- The v4 decker with alternating hooks has not been test-printed yet. The open question is whether a stiff
+  10 mm cable makes the bend at the middle hook.
 
 The design started from photos of modular snap-together cable guides and was then modelled from scratch and
-extended (deckers, keel, generator). Built with [Claude Code](https://claude.com/claude-code).
+extended (deckers, generator). Built with [Claude Code](https://claude.com/claude-code).
 
 ## License
 

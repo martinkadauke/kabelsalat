@@ -244,12 +244,15 @@ class Generator(tk.Tk):
             zeilen.append("Größe mit Klammern %.0f x %.0f mm, Höhe %.1f mm, ca. %.0f g (voll gerechnet)" %
                           (x, y, z, erg["gramm"]))
         for p in erg.get("pruefung", []):
-            zeilen.append("  Etage %-3s Kabel %4.1f mm: Fenster %.2f mm, %s" % (
-                p["etage"], p["kabel"], p["fenster"],
-                "ok" if p["ok"] else "PROBLEM: " + ", ".join(t for t, b in (("Kanal zu eng", p["kanal_frei"]),
-                                                                          ("hält nicht", p["haelt"]),
-                                                                          ("Einklickweg versperrt", p["weg_frei"]))
-                                                           if not b)))
+            zeilen.append("  Etage %-3s Kabel %4.1f mm: %s" % (
+                p["etage"], p["kabel"],
+                ("gefangen, beim Einlegen am Mittelhaken %.0f mm nach innen biegen" % p["versatz"]) if p["ok"]
+                else "PROBLEM: " + ", ".join(t for t, b in (("Kanal zu eng", p["kanal_frei"]),
+                                                            ("hält nicht", p["haelt"]),
+                                                            ("nicht gefangen", p["gefangen"]),
+                                                            ("außen nicht einlegbar", p["einlegen_aussen"]),
+                                                            ("Mitte nicht einlegbar", p["einlegen_mitte"]))
+                                             if not b)))
         if erg.get("ok"):
             zeilen.insert(0, "Fertig.")
             if bambu:

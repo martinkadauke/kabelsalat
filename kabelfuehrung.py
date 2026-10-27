@@ -10,10 +10,10 @@ Kabelkachel    gerade Spuren. Je Spur: zwei kurze Haken außen, ein langer Haken
                Schraube in Kachelmitte; ihr Schacht trennt den Mittelhaken in zwei Zungen.
 Kreisverkehr   quadratische Kachel (Kante = Kachelbreite) mit Poller zum Umlenken; die Schraube sitzt
                unten im Poller. Ohne Poller ist es die Leerkachel für Kreuzungen.
-Etagenkachel   zwei "Bäume" Rücken an Rücken auf einem vollen Kiel in der Kachelmitte, je bis zu drei Kabel
-               übereinander, jede Etage mit eigenem Kabeldurchmesser. Die Kabel klicken von außen ein; jede Etage
-               steht weiter innen als die darunter, damit ihr Fenster frei bleibt (stützenfrei). Schraube mittig
-               im Kiel.
+Etagenkachel   zwei "Bäume", je bis zu drei Kabel genau übereinander, jede Etage mit eigenem Kabeldurchmesser.
+               Wie bei der Kabelkachel kommen die Haken abwechselnd von beiden Seiten: an den Enden von vollen
+               Kielblöcken in der Mitte, am Mittelhaken von einer Außenwand. So ist jedes Kabel gefangen.
+               Schraube frei im Gang in der Kachelmitte.
 
 Alle Teile sind gleich groß (Laenge x Breite, 72 x 72 mm), unabhängig vom Kabel: alles passt an alles.
 Koordinaten: X = Kabelrichtung, Y = quer, Z = vom Tisch weg; z = 0 liegt am Tisch und auf dem Druckbett.
@@ -69,13 +69,11 @@ PARAMETER = [
     ("B_Kabel1", "Etagenkachel", "Length", 10.0, "Seite B, Etage 1 (am Tisch): Kabeldurchmesser"),
     ("B_Kabel2", "Etagenkachel", "Length", 10.0, "Seite B, Etage 2: Kabeldurchmesser"),
     ("B_Kabel3", "Etagenkachel", "Length", 10.0, "Seite B, Etage 3 (am weitesten vom Tisch): Kabeldurchmesser"),
-    ("EtagenBordabstand", "Etagenkachel", "Length", 0.0, "Luft zwischen Kanal und Bord in den Bäumen; 0 = kompakt"),
 ]
 STANDARD = {n: w for n, _, _, w, _ in PARAMETER}
 NUR_KACHEL = {"Ueberdeckung", "Klemmung", "Laenge", "Hakenbreite", "Bordhoehe"}
 NUR_POLLER = {"PollerD", "PollerLagen", "Pollerrand"}
-NUR_ETAGE = {"A_Etagen", "A_Kabel1", "A_Kabel2", "A_Kabel3", "B_Etagen", "B_Kabel1", "B_Kabel2", "B_Kabel3",
-             "EtagenBordabstand"}
+NUR_ETAGE = {"A_Etagen", "A_Kabel1", "A_Kabel2", "A_Kabel3", "B_Etagen", "B_Kabel1", "B_Kabel2", "B_Kabel3"}
 MAX_ETAGEN = 3
 SEITEN = (("A", -1), ("B", 1))           # Seite A Richtung -y (Taschen), B Richtung +y (Klammern)
 
@@ -97,8 +95,6 @@ def masse(p):
 
 
 def bordabstand(p):
-    if p.get("_bordabstand") is not None:                # Etage eines Baums (EtagenBordabstand, 0 erlaubt)
-        return p["_bordabstand"]
     return p["Bordabstand"] if p["Bordabstand"] > 0 else 0.25 * p["Kabeldurchmesser"]
 
 
@@ -187,15 +183,18 @@ def pruefe(p, art="kachel"):
         if int(p["A_Etagen"]) <= 0 and int(p["B_Etagen"]) <= 0:
             f.append("Keine Etagen: mindestens eine Seite braucht 1 bis 3 Etagen")
         if not f:
+            bm, _, _ = baeume(p)
             for seite, r in SEITEN:
-                et = baum(p, seite)
+                _, y, et = bm[seite]
                 if et:
-                    aussen = baum_aussen(p, et[0])
-                    # Seite A: Bord muss vor den Klammertaschen bleiben; Seite B hat außen nur Klammern
-                    platz = p["Breite"] / 2.0 - (taschentiefe(p) + 1.0 if r < 0 else 1.0)
-                    if aussen > platz + 1e-9:
-                        f.append("Baum %s zu breit: %.1f mm von der Mitte, Platz %.1f mm (dicke Kabel weiter oben "
-                                 "oder auf Seite B)" % (seite, aussen, platz))
+                    # Außenwand (Mitte, dort keine Taschen) und Lippenspitzen der Außenhaken (Seite A: vor den Taschen)
+                    wand = baum_aussen(p, seite)
+                    lippe = abs(y - p["Breite"] / 2.0) + max(p["Ueberdeckung"] * q["Kabeldurchmesser"] / 2.0
+                                                             for q, _ in et)
+                    platz_lippe = p["Breite"] / 2.0 - (taschentiefe(p) + 1.0 if r < 0 else 1.0)
+                    if wand > p["Breite"] / 2.0 - 1.0 + 1e-9 or lippe > platz_lippe + 1e-9:
+                        f.append("Baum %s zu breit: Außenwand %.1f mm von der Mitte, Platz %.1f mm" %
+                                 (seite, wand, p["Breite"] / 2.0 - 1.0))
     elif p["Kabeldurchmesser"] < 1.0:
         f.append("Kabeldurchmesser unter 1 mm")
     if p["Zinke"] + p["Schlitz"] > p["KlammerBreite"] - 2.0:
@@ -485,111 +484,144 @@ def baue_kreisverkehr(werte=None, mit_poller=True):
 
 
 def baum(p, seite):
-    """Baum einer Seite ("A" oder "B"): Etagen vom Tisch aus als (Parameter der Etage, Abstand der Spurmitte von
-    der Kachelmitte, Boden z).
-
-    Die oberste Etage liegt mit ihrem Steg am Kiel. Jede tiefere Etage liegt so weit außen, dass der Bord der
-    Etage darüber bündig auf ihrer Lippenspitze steht. So ist das Fenster jeder Etage nach außen frei: das Kabel
-    kommt von der Seite und klickt unter die Lippe. Alles steht auf dem Kiel oder auf der Lippe darunter."""
+    """Etagen eines Baums ("A" oder "B") vom Tisch aus als (Parameter der Etage, Boden z). Die Kabel eines Baums
+    liegen genau übereinander."""
     n = min(MAX_ETAGEN, max(0, int(p["%s_Etagen" % seite])))
-    c, l, s, wb = p["Spiel"], p["Lippe"], p["Steg"], p["Bordbreite"]
-    pes = [dict(p, Kabeldurchmesser=p["%s_Kabel%d" % (seite, i + 1)], _bordabstand=p["EtagenBordabstand"])
-           for i in range(n)]
-    R = [pe["Kabeldurchmesser"] / 2.0 + c for pe in pes]
-    a = [0.0] * n
-    for i in range(n - 1, -1, -1):
-        a[i] = s + R[i]                                              # Steg liegt am Kiel
-        if i + 1 < n:                                                # Bord darüber auf der Lippenspitze
-            a[i] = max(a[i], a[i + 1] + R[i + 1] + bordabstand(pes[i + 1]) + wb
-                       - p["Ueberdeckung"] * pes[i]["Kabeldurchmesser"] / 2.0)
     liste, z = [], p["Dicke"]
     for i in range(n):
-        liste.append((pes[i], a[i], z))
-        z += pes[i]["Kabeldurchmesser"] + c + l
+        pe = dict(p, Kabeldurchmesser=p["%s_Kabel%d" % (seite, i + 1)])
+        liste.append((pe, z))
+        z += pe["Kabeldurchmesser"] + p["Spiel"] + p["Lippe"]
     return liste
 
 
+def mittelgang(p):
+    """Gang zwischen den Bäumen: Platz für den Schraubenkopf und für ein Kabel, das am Mittelhaken von innen
+    eingelegt wird (es muss an den Lippen der tieferen Etagen vorbei)."""
+    r_max = max([pe["Kabeldurchmesser"] / 2.0 for s, _ in SEITEN for pe, _ in baum(p, s)] + [0.0])
+    return max(senkkopf(p)[1] + 1.0, (1.0 + p["Ueberdeckung"]) * r_max + 0.6)
+
+
 def baeume(p):
-    """Beide Bäume {seite: (richtung, etagen)} und Oberkante des Kiels (= höchste Etage)."""
-    bm = {seite: (r, baum(p, seite)) for seite, r in SEITEN}
-    oben = max([z + pe["Kabeldurchmesser"] + p["Spiel"] + p["Lippe"] for _, et in bm.values() for pe, _, z in et]
+    """{seite: (richtung, y der Kabelmitten, etagen)}, Mittelgang, Oberkante (= höchste Etage)."""
+    c, m = p["Spiel"], p["Breite"] / 2.0
+    gang = mittelgang(p)
+    bm = {}
+    for seite, r in SEITEN:
+        et = baum(p, seite)
+        R_max = max([pe["Kabeldurchmesser"] / 2.0 + c for pe, _ in et] + [0.0])
+        bm[seite] = (r, m + r * (gang / 2.0 + R_max), et)
+    oben = max([z + pe["Kabeldurchmesser"] + c + p["Lippe"] for _, _, et in bm.values() for pe, z in et]
                + [p["Dicke"]])
-    return bm, oben
+    return bm, gang, oben
 
 
-def baum_aussen(p, etage):
-    """Abstand der Bord-Außenkante der untersten Etage von der Kachelmitte."""
-    pe, a, _ = etage
-    return a + pe["Kabeldurchmesser"] / 2.0 + p["Spiel"] + bordabstand(pe) + p["Bordbreite"]
+def wand_dicke(p, hoehe):
+    """Außenwand am Mittelhaken: oben Steg + 0,6 mm, zum Fuß hin breiter (1:8, druckt ohne Stützen)."""
+    oben = p["Steg"] + 0.6
+    return oben, oben + hoehe / 8.0
+
+
+def baum_aussen(p, seite):
+    """Abstand der äußersten Kante eines Baums (Fuß der Außenwand) von der Kachelmitte; 0 ohne Etagen."""
+    bm, gang, _ = baeume(p)
+    r, y, et = bm[seite]
+    if not et:
+        return 0.0
+    pe, z = et[-1]
+    zt = z + pe["Kabeldurchmesser"] + p["Spiel"] + p["Lippe"]
+    R_max = max(q["Kabeldurchmesser"] / 2.0 + p["Spiel"] for q, _ in et)
+    return abs(y - p["Breite"] / 2.0) + R_max + wand_dicke(p, zt - p["Dicke"])[1]
+
+
+def etagen_lagen(p):
+    """x-Lagen der Etagenkachel: Außenhaken an beiden Enden (Steg am Kiel) und ein Mittelhaken (Steg an der
+    Außenwand). Abstand dazwischen so groß wie möglich, damit sich das Kabel beim Einlegen biegen lässt."""
+    W, b = p["Laenge"], 0.8 * p["Hakenbreite"]
+    x0 = taschentiefe(p) + 1.0
+    return [(x0 + b / 2.0, b), (W - x0 - b / 2.0, b)], (W / 2.0, b)
 
 
 def etagen_kabel(p):
     """Alle Kabel der Etagenkachel: (Seite, Etage, Durchmesser, y, z der Kabelmitte, wenn es auf dem Boden liegt)."""
-    m = p["Breite"] / 2.0
-    bm, _ = baeume(p)
-    return [(seite, i + 1, pe["Kabeldurchmesser"], m + r * a, z + pe["Kabeldurchmesser"] / 2.0)
-            for seite, (r, et) in bm.items() for i, (pe, a, z) in enumerate(et)]
+    bm, _, _ = baeume(p)
+    return [(seite, i + 1, pe["Kabeldurchmesser"], y, z + pe["Kabeldurchmesser"] / 2.0)
+            for seite, (r, y, et) in bm.items() for i, (pe, z) in enumerate(et)]
+
+
+def _yz_flaeche(x0, x1, m, r, pts):
+    """Fläche in der yz-Ebene (u = Abstand von der Kachelmitte in Richtung r, z) von x0 bis x1 extrudiert."""
+    rein = [q for i, q in enumerate(pts) if i == 0 or abs(q[0] - pts[i - 1][0]) + abs(q[1] - pts[i - 1][1]) > 1e-6]
+    if abs(rein[0][0] - rein[-1][0]) + abs(rein[0][1] - rein[-1][1]) < 1e-6:
+        rein.pop()
+    n = len(rein)
+    rein = [q for i, q in enumerate(rein)
+            if abs((q[0] - rein[i - 1][0]) * (rein[(i + 1) % n][1] - q[1])
+                   - (q[1] - rein[i - 1][1]) * (rein[(i + 1) % n][0] - q[0])) > 1e-9]
+    poly = Part.makePolygon([V(x0, m + r * u, z) for u, z in rein] + [V(x0, m + r * rein[0][0], rein[0][1])])
+    return Part.Face(poly).extrude(V(x1 - x0, 0, 0))
 
 
 def baue_etagenkachel(werte=None):
+    """Zwei Bäume, je bis zu drei Kabel genau übereinander. Wie bei der Kabelkachel kommen die Haken abwechselnd
+    von beiden Seiten: an den Enden vom Kiel in der Mitte, am Mittelhaken von einer Außenwand. Dadurch ist das
+    Kabel gefangen (es kann nach keiner Seite heraus, ohne sich zu biegen). Eingelegt wird es an den Enden von
+    außen und am Mittelhaken von innen aus dem Gang. Die Schraube sitzt frei im Gang in der Kachelmitte."""
     p = dict(STANDARD, **(werte or {}))
     pruefe(p, "etagen")
-    W, H, t, s, wb = p["Laenge"], p["Breite"], p["Dicke"], p["Steg"], p["Bordbreite"]
-    c, l, m = p["Spiel"], p["Lippe"], H / 2.0
-    bm, zo = baeume(p)
+    W, H, t, c, l = p["Laenge"], p["Breite"], p["Dicke"], p["Spiel"], p["Lippe"]
+    m = H / 2.0
+    bm, gang, zo = baeume(p)
     kl, ta = klammer(p), tasche(p)
     plus = [_setze(kl, W, H / 2), _setze(_gespiegelt(kl), W / 4, H, 90), _setze(kl, 3 * W / 4, H, 90)]
     minus = [_setze(ta, 0, H / 2), _setze(_gespiegelt(ta), W / 4, 0, 90), _setze(ta, 3 * W / 4, 0, 90)]
-    xa, xe, xm, lm = kachel_lagen(p)
-    b, sch = p["Hakenbreite"], schacht(p)
-    tm = (lm - sch) / 2.0                       # Mittelhaken als zwei Zungen, dazwischen der Schraubenschacht
-    lagen = ((xa, b), (xm - (sch + tm) / 2.0, tm), (xm + (sch + tm) / 2.0, tm), (xe, b))
-    x0, x1 = xa - b / 2.0, xe + b / 2.0
-    schlitze = []
-    for seite, (r, et) in bm.items():
-        # Kiel: treppenförmig bis an die Stege jeder Etage, über dem eigenen Baum in Stegbreite bis ganz oben.
-        # Er läuft über die ganze Kachel und trägt alles; zur Mitte hin stößt er an den Kiel der anderen Seite.
+    aussen, (xm, lb) = etagen_lagen(p)
+    for seite, (r, y, et) in bm.items():
+        u = abs(y - m)                                   # Abstand der Kabelmitten von der Kachelmitte
+        # Kiel an den Außenhaken: von der Mitte bis an die Innenkante jeder Etage; über dem eigenen Baum bleibt er
+        # bis ganz oben (trägt den höheren Baum der anderen Seite mit)
         stufen, zu = [], t - 0.5
-        for pe, a, z in et:
+        for pe, z in et:
             zt = z + pe["Kabeldurchmesser"] + c + l
-            stufen.append((a - pe["Kabeldurchmesser"] / 2.0 - c, zu, zt))
+            stufen.append((u - pe["Kabeldurchmesser"] / 2.0 - c, zu, zt))
             zu = zt
-        stufen.append((stufen[-1][0] if stufen else s, zu, zo))
+        if not stufen:
+            stufen = [(gang / 2.0, zu, zo)]
+        elif zu < zo:
+            stufen.append((stufen[-1][0], zu, zo))
         pts = [(0.0, t - 0.5)]
-        for u, z_von, z_bis in stufen:
-            pts += [(u, z_von), (u, z_bis)]
+        for ui, z_von, z_bis in stufen:
+            pts += [(ui, z_von), (ui, z_bis)]
         pts.append((0.0, zo))
-        rein = [q for i, q in enumerate(pts) if i == 0 or abs(q[0] - pts[i - 1][0]) + abs(q[1] - pts[i - 1][1]) > 1e-6]
-        rein = [q for i, q in enumerate(rein) if i == 0 or i == len(rein) - 1 or
-                abs((q[0] - rein[i - 1][0]) * (rein[i + 1][1] - q[1]) - (q[1] - rein[i - 1][1]) * (rein[i + 1][0] - q[0])) > 1e-9]
-        poly = Part.makePolygon([V(x0, m + r * u, z) for u, z in rein] + [V(x0, m + r * rein[0][0], rein[0][1])])
-        plus.append(Part.Face(poly).extrude(V(x1 - x0, 0, 0)))
-        schlitz = None                          # zu dünn neben dem Schacht: dort den Kiel ganz ausschneiden
-        for u, z_von, z_bis in stufen:
-            z_von = max(z_von, t)
-            if u < sch / 2.0 + 1.2 and z_bis - z_von > 1e-6:
-                kasten = Part.makeBox(sch, u + 0.5, z_bis - z_von + (1.0 if z_bis >= zo else 0.0),
-                                      V(xm - sch / 2.0, min(m, m + r * (u + 0.5)), z_von))
-                schlitz = kasten if schlitz is None else schlitz.fuse(kasten)
-        if schlitz is not None:
-            schlitze.append(schlitz)
-        # Haken (Steg zur Mitte) und Borde (außen); Bord der unteren Etage auf der Platte, darüber auf der Lippe
-        for i, (pe, a, z) in enumerate(et):
+        for xa, b in aussen:
+            plus.append(_yz_flaeche(xa - b / 2.0, xa + b / 2.0, m, r, pts))
+        if not et:
+            continue
+        # Außenwand am Mittelhaken: innen an der Außenkante jeder Etage, außen zum Fuß hin breiter
+        R_max = max(pe["Kabeldurchmesser"] / 2.0 + c for pe, _ in et)
+        pe_o, z_o = et[-1]
+        zt_o = z_o + pe_o["Kabeldurchmesser"] + c + l
+        w_oben, w_fuss = wand_dicke(p, zt_o - t)
+        pts = [(u + R_max + w_fuss, t - 0.5), (u + R_max + w_oben, zt_o)]
+        for i in range(len(et) - 1, -1, -1):
+            pe, z = et[i]
             R = pe["Kabeldurchmesser"] / 2.0 + c
-            formen = {}
-            for laenge in (b, tm):
-                hk = haken(pe, laenge, oben=(i == len(et) - 1), kappe=False)
-                if r > 0:
-                    hk = _gespiegelt(hk)
-                bd = bord(pe, laenge + (1.0 if i == 0 else 0.0))
-                hk.translate(V(0, 0, z - t))
-                bd.translate(V(0, 0, z - t))
-                formen[laenge] = hk, bd
-            for x, laenge in lagen:
-                hk, bd = formen[laenge]
-                plus += [_setze(hk, x, m + r * a), _setze(bd, x, m + r * (a + R + bordabstand(pe) + wb / 2.0))]
+            pts += [(u + R, z + pe["Kabeldurchmesser"] + c + l), (u + R, z if i else t - 0.5)]
+        plus.append(_yz_flaeche(xm - lb / 2.0, xm + lb / 2.0, m, r, pts))
+        # Haken: Steg zur Mitte an den Enden, Steg nach außen in der Mitte
+        for i, (pe, z) in enumerate(et):
+            oben = i == len(et) - 1
+            ha = haken(pe, aussen[0][1], oben=oben, kappe=False)       # gebaut mit Steg auf +y
+            hm = haken(pe, lb, oben=oben, kappe=False)
+            if r < 0:
+                hm = _gespiegelt(hm)                       # Seite A: Mitte liegt auf +y, außen auf -y
+            else:
+                ha = _gespiegelt(ha)
+            ha.translate(V(0, 0, z - t))
+            hm.translate(V(0, 0, z - t))
+            plus += [_setze(ha, xa, y) for xa, _ in aussen] + [_setze(hm, xm, y)]
     form = _dazu(Part.makeBox(W, H, t), plus, "Etagenkachel")
-    minus += [_senkloch(p, xm, m), Part.makeCylinder(sch / 2.0, zo + 1.0 - t, V(xm, m, t))] + schlitze
+    minus.append(_senkloch(p, xm, m))
     return _weg(form, minus, "Etagenkachel")
 
 
@@ -606,44 +638,44 @@ def _wanderndes_kabel(a, b, rho, x0, x1):
     return s
 
 
-def einfuehrweg(p, y, z, aussen, laenge=30.0):
-    """Weg beim Einklicken, rückwärts: Kabel, auf Fenstermaß gestaucht, vom Fenster senkrecht dazu `laenge` mm
-    nach außen (aussen = -1: Bord auf -y, +1: Bord auf +y). Gibt (überstrichener Körper, Fenster, Neigung °)."""
-    d, c = p["Kabeldurchmesser"], p["Spiel"]
-    r, R = d / 2.0, d / 2.0 + c
-    r1, h = lippen_rundung(p), bordhoehe(p)
-    rr = min(bord_rundung(p), h - 0.2)
-    c1 = (y + aussen * (p["Ueberdeckung"] * r - r1), z + 2 * r + c + r1)   # Rundung Lippenspitze
-    c2 = (y + aussen * (R + bordabstand(p) + rr), z + h - rr)             # Rundung Bordkante innen
-    dy, dz = c1[0] - c2[0], c1[1] - c2[1]
-    L = math.hypot(dy, dz)
-    w = L - r1 - rr
-    m = (c2[0] + dy / L * (rr + w / 2), c2[1] + dz / L * (rr + w / 2))
-    n = (-dz / L, dy / L)
-    if n[0] * aussen < 0:
-        n = (-n[0], -n[1])
-    weg = _wanderndes_kabel(m, (m[0] + n[0] * laenge, m[1] + n[1] * laenge), w / 2 - 0.1, -15,
-                            p["Laenge"] + 15)
-    return weg, w, math.degrees(math.atan2(n[1], abs(n[0])))
-
-
 def pruefe_etagen_kabel(form, p):
-    """Je Etage: Kabel liegt frei, kann nicht senkrecht heraus, Einklickweg frei, Fenster. Liste von dicts."""
-    W, m = p["Laenge"], p["Breite"] / 2.0
-    bm, _ = baeume(p)
+    """Je Etage: Kabel liegt frei; ist gefangen (kann nicht vom Tisch weg, nicht nach innen, nicht nach außen);
+    lässt sich an den Außenhaken von außen und am Mittelhaken von innen einlegen. Liste von dicts.
+    Einlegen: zuerst die Etage am Tisch. Das Kabel kommt neben den Lippen der tieferen Etagen vorbei, dafür muss es
+    am Mittelhaken um `versatz` mm nach innen gebogen sein, während es an den Enden schon sitzt."""
+    W, c, ue = p["Laenge"], p["Spiel"], p["Ueberdeckung"]
+    bm, _, zo = baeume(p)
+    aussen, (xm, lb) = etagen_lagen(p)
     zeilen = []
-    for seite, (r, et) in bm.items():
-        for i, (pe, a, z) in enumerate(et):
-            y, rk = m + r * a, pe["Kabeldurchmesser"] / 2.0
-            frei = form.common(Part.makeCylinder(rk - 0.01, W + 30, V(-15, y, z + rk), V(1, 0, 0))).Volume
-            hoch = form.common(Part.makeCylinder(rk - 0.01, W + 30, V(-15, y, z + rk + p["Spiel"] + 0.5),
-                                                 V(1, 0, 0))).Volume
-            weg, w, neigung = einfuehrweg(pe, y, z, r)
-            stoss = form.common(weg).Volume
-            zeilen.append({"etage": "%s%d" % (seite, i + 1), "kabel": pe["Kabeldurchmesser"], "fenster": round(w, 2),
-                           "kanal_frei": frei < 1e-3, "haelt": hoch > 1.0, "weg_frei": stoss < 1e-2,
-                           "ok": frei < 1e-3 and hoch > 1.0 and stoss < 1e-2, "y": round(y, 2), "z": round(z, 2),
-                           "neigung": round(neigung)})
+    for seite, (r, y, et) in bm.items():
+        for i, (pe, z) in enumerate(et):
+            rk = pe["Kabeldurchmesser"] / 2.0
+            zk = z + rk
+
+            def ueber(dy, dz):
+                return form.common(Part.makeCylinder(rk - 0.01, W + 30, V(-15, y + dy, zk + dz),
+                                                     V(1, 0, 0))).Volume
+
+            frei = ueber(0, 0)
+            hoch = ueber(0, c + 0.5)
+            nach_aussen = ueber(r * (c + 0.5), 0)
+            nach_innen = ueber(-r * (c + 0.5), 0)
+            # an den tieferen Etagen vorbei: so weit neben die Kabelmitte, wie deren Lippen reichen
+            v = max(ue * q["Kabeldurchmesser"] / 2.0 for q, _ in et[i:]) + rk + 0.1
+            stoss_a = 0.0
+            for xa, b in aussen:
+                for a_, b_ in (((y, zk), (y + r * v, zk)), ((y + r * v, zk), (y + r * v, zo + 15))):
+                    stoss_a += form.common(_wanderndes_kabel(a_, b_, rk - 0.05, xa - b / 2.0, xa + b / 2.0)).Volume
+            stoss_m = 0.0
+            for a_, b_ in (((y, zk), (y - r * v, zk)), ((y - r * v, zk), (y - r * v, zo + 15))):
+                stoss_m += form.common(_wanderndes_kabel(a_, b_, rk - 0.05, xm - lb / 2.0, xm + lb / 2.0)).Volume
+            ok = (frei < 1e-3 and hoch > 1.0 and nach_aussen > 1.0 and nach_innen > 1.0
+                  and stoss_a < 1e-2 and stoss_m < 1e-2)
+            zeilen.append({"etage": "%s%d" % (seite, i + 1), "kabel": pe["Kabeldurchmesser"], "ok": ok,
+                           "kanal_frei": frei < 1e-3, "haelt": hoch > 1.0,
+                           "gefangen": nach_aussen > 1.0 and nach_innen > 1.0,
+                           "einlegen_aussen": stoss_a < 1e-2, "einlegen_mitte": stoss_m < 1e-2,
+                           "versatz": round(v, 1), "y": round(y, 2), "z": round(z, 2)})
     return zeilen
 
 
@@ -654,7 +686,7 @@ def bauhoehe(p, form):
     if form == "kreisverkehr":
         return poller_masse(p)[3]
     if form == "etagen":
-        return baeume(p)[1]
+        return baeume(p)[2]
     return p["Dicke"]
 
 

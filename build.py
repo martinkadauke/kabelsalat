@@ -21,7 +21,7 @@ import Part  # noqa: E402
 import kabelfuehrung as kf  # noqa: E402
 
 V = App.Vector
-STAND = "v3"
+STAND = "v4"
 DRUCK = os.path.join(HERE, "druck", STAND)
 MAKRO = App.getUserMacroDir(True)
 
@@ -229,18 +229,19 @@ def pruefe_etagen(w, k6, kv):
     W, H = p["Laenge"], p["Breite"]
     e = kf.baue_etagenkachel(w)
     grunddaten("Etagenkachel", e)
-    bm, zo = kf.baeume(p)
-    log("  Kachel %.1f x %.1f mm, Bauhoehe %.1f, Schraube mittig" % (W, H, zo))
-    for seite, (r, et) in bm.items():
+    bm, gang, zo = kf.baeume(p)
+    log("  Kachel %.1f x %.1f mm, Bauhoehe %.1f, Gang in der Mitte %.1f mm, Schraube mittig im Gang" %
+        (W, H, zo, gang))
+    for seite, (r, y, et) in bm.items():
         if et:
-            log("  Baum %s: %.1f mm von der Mitte bis zum aeusseren Bord" % (seite, kf.baum_aussen(p, et[0])))
-        for i, (pe, a, z) in enumerate(et):
-            y = H / 2.0 + r * a
-            log("  %s%d: Kabel %g mm, Spurmitte y=%.1f, Boden z=%.1f, Bord %.2f mm" %
-                (seite, i + 1, pe["Kabeldurchmesser"], y, z, kf.bordhoehe(pe)))
-            kanal(e, pe, y, z, W, "  %s%d" % (seite, i + 1))
-            fenster_messen(pe, i == len(et) - 1)
-            einfuehrweg(e, pe, y, z, W, "  %s%d" % (seite, i + 1), r)
+            log("  Baum %s: Kabelmitten bei y=%.1f, Aussenwand bis %.1f mm von der Mitte" %
+                (seite, y, kf.baum_aussen(p, seite)))
+    for z in kf.pruefe_etagen_kabel(e, p):
+        log("  %s: Kabel %g mm, Boden z=%.1f: frei=%s, haelt=%s, gefangen (innen+aussen)=%s, einlegen aussen=%s, "
+            "mitte=%s (dabei %.1f mm nach innen gebogen)" %
+            (z["etage"], z["kabel"], z["z"], z["kanal_frei"], z["haelt"], z["gefangen"], z["einlegen_aussen"],
+             z["einlegen_mitte"], z["versatz"]))
+        assert z["ok"], z
     kl = kf.klammer(p)
     faelle = paare(e, k6, p, "Etagen", "Kachel6") + paare(k6, e, p, "Kachel6", "Etagen") + [
         ("Etagen | Kreisverkehr", e, bewegt(kv, W, 0), bewegt(kl, W, H / 2), bewegt(kv, W + 0.5, 0)),

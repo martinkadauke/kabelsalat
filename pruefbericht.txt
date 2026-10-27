@@ -16,26 +16,14 @@
   Kreisverkehr / Kachel 90 Grad oben       Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kachel 90 Grad unten / Kreisverkehr      Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Doppeldecker_4mm ==
-  Etagenkachel                 gueltig=True  V=21787 mm3  (~27.0 g PLA)  80.0 x 80.0 x 15.4 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 15.4, Schraube mittig
-  Baum A: 13.2 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 4 mm, Spurmitte y=27.6, Boden z=3.0, Bord 1.50 mm
-    A1: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (35.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  A2: Kabel 4 mm, Spurmitte y=31.2, Boden z=9.2, Bord 1.50 mm
-    A2: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (31.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  Baum B: 13.2 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 4 mm, Spurmitte y=44.4, Boden z=3.0, Bord 1.50 mm
-    B1: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (35.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  B2: Kabel 4 mm, Spurmitte y=40.8, Boden z=9.2, Bord 1.50 mm
-    B2: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (31.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=18474 mm3  (~22.9 g PLA)  80.0 x 80.0 x 15.4 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 15.4, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=29.3, Aussenwand bis 13.6 mm von der Mitte
+  Baum B: Kabelmitten bei y=42.7, Aussenwand bis 13.7 mm von der Mitte
+  A1: Kabel 4 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  A2: Kabel 4 mm, Boden z=9.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  B1: Kabel 4 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  B2: Kabel 4 mm, Boden z=9.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -43,34 +31,16 @@
   Etagen | Kreisverkehr                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kreisverkehr | Etagen                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Dreidecker_4mm ==
-  Etagenkachel                 gueltig=True  V=28569 mm3  (~35.4 g PLA)  80.0 x 80.0 x 21.6 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 21.6, Schraube mittig
-  Baum A: 16.8 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 4 mm, Spurmitte y=24.0, Boden z=3.0, Bord 1.50 mm
-    A1: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (35.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  A2: Kabel 4 mm, Spurmitte y=27.6, Boden z=9.2, Bord 1.50 mm
-    A2: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (35.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  A3: Kabel 4 mm, Spurmitte y=31.2, Boden z=15.4, Bord 1.50 mm
-    A3: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (31.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    A3: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  Baum B: 16.8 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 4 mm, Spurmitte y=48.0, Boden z=3.0, Bord 1.50 mm
-    B1: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (35.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  B2: Kabel 4 mm, Spurmitte y=44.4, Boden z=9.2, Bord 1.50 mm
-    B2: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (35.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  B3: Kabel 4 mm, Spurmitte y=40.8, Boden z=15.4, Bord 1.50 mm
-    B3: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (31.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    B3: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=20169 mm3  (~25.0 g PLA)  80.0 x 80.0 x 21.6 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 21.6, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=29.3, Aussenwand bis 14.4 mm von der Mitte
+  Baum B: Kabelmitten bei y=42.7, Aussenwand bis 14.4 mm von der Mitte
+  A1: Kabel 4 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  A2: Kabel 4 mm, Boden z=9.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  A3: Kabel 4 mm, Boden z=15.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  B1: Kabel 4 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  B2: Kabel 4 mm, Boden z=9.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  B3: Kabel 4 mm, Boden z=15.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -90,26 +60,14 @@
   Kreisverkehr / Kachel 90 Grad oben       Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kachel 90 Grad unten / Kreisverkehr      Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Doppeldecker_6mm ==
-  Etagenkachel                 gueltig=True  V=24251 mm3  (~30.1 g PLA)  80.0 x 80.0 x 19.4 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 19.4, Schraube mittig
-  Baum A: 15.6 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 6 mm, Spurmitte y=26.2, Boden z=3.0, Bord 1.45 mm
-    A1: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (47.3 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  A2: Kabel 6 mm, Spurmitte y=30.2, Boden z=11.2, Bord 1.45 mm
-    A2: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (42.7 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  Baum B: 15.6 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 6 mm, Spurmitte y=45.8, Boden z=3.0, Bord 1.45 mm
-    B1: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (47.3 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  B2: Kabel 6 mm, Spurmitte y=41.8, Boden z=11.2, Bord 1.45 mm
-    B2: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (42.7 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=19693 mm3  (~24.4 g PLA)  80.0 x 80.0 x 19.4 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 19.4, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=28.3, Aussenwand bis 16.1 mm von der Mitte
+  Baum B: Kabelmitten bei y=43.7, Aussenwand bis 16.2 mm von der Mitte
+  A1: Kabel 6 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  A2: Kabel 6 mm, Boden z=11.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  B1: Kabel 6 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  B2: Kabel 6 mm, Boden z=11.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -117,34 +75,16 @@
   Etagen | Kreisverkehr                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kreisverkehr | Etagen                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Dreidecker_6mm ==
-  Etagenkachel                 gueltig=True  V=33951 mm3  (~42.1 g PLA)  80.0 x 80.0 x 27.6 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 27.6, Schraube mittig
-  Baum A: 19.6 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 6 mm, Spurmitte y=22.2, Boden z=3.0, Bord 1.45 mm
-    A1: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (47.3 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  A2: Kabel 6 mm, Spurmitte y=26.2, Boden z=11.2, Bord 1.45 mm
-    A2: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (47.3 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  A3: Kabel 6 mm, Spurmitte y=30.2, Boden z=19.4, Bord 1.45 mm
-    A3: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (42.7 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    A3: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  Baum B: 19.6 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 6 mm, Spurmitte y=49.8, Boden z=3.0, Bord 1.45 mm
-    B1: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (47.3 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  B2: Kabel 6 mm, Spurmitte y=45.8, Boden z=11.2, Bord 1.45 mm
-    B2: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (47.3 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  B3: Kabel 6 mm, Spurmitte y=41.8, Boden z=19.4, Bord 1.45 mm
-    B3: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (42.7 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    B3: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=22089 mm3  (~27.4 g PLA)  80.0 x 80.0 x 27.6 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 27.6, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=28.3, Aussenwand bis 17.2 mm von der Mitte
+  Baum B: Kabelmitten bei y=43.7, Aussenwand bis 17.2 mm von der Mitte
+  A1: Kabel 6 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  A2: Kabel 6 mm, Boden z=11.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  A3: Kabel 6 mm, Boden z=19.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  B1: Kabel 6 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  B2: Kabel 6 mm, Boden z=11.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  B3: Kabel 6 mm, Boden z=19.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -164,26 +104,14 @@
   Kreisverkehr / Kachel 90 Grad oben       Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kachel 90 Grad unten / Kreisverkehr      Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Doppeldecker_8mm ==
-  Etagenkachel                 gueltig=True  V=26970 mm3  (~33.4 g PLA)  80.0 x 80.0 x 23.4 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 23.4, Schraube mittig
-  Baum A: 18.0 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 8 mm, Spurmitte y=24.8, Boden z=3.0, Bord 1.45 mm
-    A1: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (56.6 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  A2: Kabel 8 mm, Spurmitte y=29.2, Boden z=13.2, Bord 1.45 mm
-    A2: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (53.5 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  Baum B: 18.0 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 8 mm, Spurmitte y=47.2, Boden z=3.0, Bord 1.45 mm
-    B1: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (56.6 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  B2: Kabel 8 mm, Spurmitte y=42.8, Boden z=13.2, Bord 1.45 mm
-    B2: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (53.5 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=20986 mm3  (~26.0 g PLA)  80.0 x 80.0 x 23.4 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 23.4, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=27.3, Aussenwand bis 18.6 mm von der Mitte
+  Baum B: Kabelmitten bei y=44.7, Aussenwand bis 18.7 mm von der Mitte
+  A1: Kabel 8 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  A2: Kabel 8 mm, Boden z=13.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  B1: Kabel 8 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  B2: Kabel 8 mm, Boden z=13.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -191,34 +119,16 @@
   Etagen | Kreisverkehr                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kreisverkehr | Etagen                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Dreidecker_8mm ==
-  Etagenkachel                 gueltig=True  V=39959 mm3  (~49.5 g PLA)  80.0 x 80.0 x 33.6 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 33.6, Schraube mittig
-  Baum A: 22.4 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 8 mm, Spurmitte y=20.4, Boden z=3.0, Bord 1.45 mm
-    A1: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (56.6 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  A2: Kabel 8 mm, Spurmitte y=24.8, Boden z=13.2, Bord 1.45 mm
-    A2: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (56.6 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  A3: Kabel 8 mm, Spurmitte y=29.2, Boden z=23.4, Bord 1.45 mm
-    A3: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (53.5 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    A3: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  Baum B: 22.4 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 8 mm, Spurmitte y=51.6, Boden z=3.0, Bord 1.45 mm
-    B1: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (56.6 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  B2: Kabel 8 mm, Spurmitte y=47.2, Boden z=13.2, Bord 1.45 mm
-    B2: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (56.6 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  B3: Kabel 8 mm, Spurmitte y=42.8, Boden z=23.4, Bord 1.45 mm
-    B3: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (53.5 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    B3: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=24138 mm3  (~29.9 g PLA)  80.0 x 80.0 x 33.6 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 33.6, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=27.3, Aussenwand bis 19.9 mm von der Mitte
+  Baum B: Kabelmitten bei y=44.7, Aussenwand bis 19.9 mm von der Mitte
+  A1: Kabel 8 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  A2: Kabel 8 mm, Boden z=13.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  A3: Kabel 8 mm, Boden z=23.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  B1: Kabel 8 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  B2: Kabel 8 mm, Boden z=13.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  B3: Kabel 8 mm, Boden z=23.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -238,26 +148,14 @@
   Kreisverkehr / Kachel 90 Grad oben       Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kachel 90 Grad unten / Kreisverkehr      Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Doppeldecker_10mm ==
-  Etagenkachel                 gueltig=True  V=29912 mm3  (~37.1 g PLA)  80.0 x 80.0 x 27.4 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 27.4, Schraube mittig
-  Baum A: 20.4 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 10 mm, Spurmitte y=23.4, Boden z=3.0, Bord 1.46 mm
-    A1: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (63.7 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  A2: Kabel 10 mm, Spurmitte y=28.2, Boden z=15.2, Bord 1.46 mm
-    A2: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (61.9 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  Baum B: 20.4 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 10 mm, Spurmitte y=48.6, Boden z=3.0, Bord 1.46 mm
-    B1: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (63.7 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  B2: Kabel 10 mm, Spurmitte y=43.8, Boden z=15.2, Bord 1.46 mm
-    B2: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (61.9 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=22343 mm3  (~27.7 g PLA)  80.0 x 80.0 x 27.4 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 27.4, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=26.3, Aussenwand bis 21.1 mm von der Mitte
+  Baum B: Kabelmitten bei y=45.7, Aussenwand bis 21.2 mm von der Mitte
+  A1: Kabel 10 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  A2: Kabel 10 mm, Boden z=15.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  B1: Kabel 10 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  B2: Kabel 10 mm, Boden z=15.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -265,34 +163,16 @@
   Etagen | Kreisverkehr                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kreisverkehr | Etagen                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Dreidecker_10mm ==
-  Etagenkachel                 gueltig=True  V=46560 mm3  (~57.7 g PLA)  80.0 x 80.0 x 39.6 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 39.6, Schraube mittig
-  Baum A: 25.2 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 10 mm, Spurmitte y=18.6, Boden z=3.0, Bord 1.46 mm
-    A1: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (63.7 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  A2: Kabel 10 mm, Spurmitte y=23.4, Boden z=15.2, Bord 1.46 mm
-    A2: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (63.7 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  A3: Kabel 10 mm, Spurmitte y=28.2, Boden z=27.4, Bord 1.46 mm
-    A3: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (61.9 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    A3: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  Baum B: 25.2 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 10 mm, Spurmitte y=53.4, Boden z=3.0, Bord 1.46 mm
-    B1: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (63.7 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  B2: Kabel 10 mm, Spurmitte y=48.6, Boden z=15.2, Bord 1.46 mm
-    B2: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (63.7 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  B3: Kabel 10 mm, Spurmitte y=43.8, Boden z=27.4, Bord 1.46 mm
-    B3: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (61.9 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B3: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=26309 mm3  (~32.6 g PLA)  80.0 x 80.0 x 39.6 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 39.6, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=26.3, Aussenwand bis 22.7 mm von der Mitte
+  Baum B: Kabelmitten bei y=45.7, Aussenwand bis 22.7 mm von der Mitte
+  A1: Kabel 10 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  A2: Kabel 10 mm, Boden z=15.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  A3: Kabel 10 mm, Boden z=27.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  B1: Kabel 10 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  B2: Kabel 10 mm, Boden z=15.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  B3: Kabel 10 mm, Boden z=27.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -300,34 +180,16 @@
   Etagen | Kreisverkehr                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kreisverkehr | Etagen                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Dreidecker_A4-6-4_B10-10-10mm ==
-  Etagenkachel                 gueltig=True  V=39384 mm3  (~48.8 g PLA)  80.0 x 80.0 x 39.6 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 39.6, Schraube mittig
-  Baum A: 17.2 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 4 mm, Spurmitte y=23.6, Boden z=3.0, Bord 1.50 mm
-    A1: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (35.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  A2: Kabel 6 mm, Spurmitte y=28.2, Boden z=9.2, Bord 1.45 mm
-    A2: Kabel 6 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (47.3 mm3)
-  Fenster gemessen 5.60 mm (Ziel 5.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 25 Grad gegen die Platte geneigt
-  A3: Kabel 4 mm, Spurmitte y=31.2, Boden z=17.4, Bord 1.50 mm
-    A3: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (31.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    A3: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  Baum B: 25.2 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 10 mm, Spurmitte y=53.4, Boden z=3.0, Bord 1.46 mm
-    B1: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (63.7 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  B2: Kabel 10 mm, Spurmitte y=48.6, Boden z=15.2, Bord 1.46 mm
-    B2: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (63.7 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  B3: Kabel 10 mm, Spurmitte y=43.8, Boden z=27.4, Bord 1.46 mm
-    B3: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (61.9 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B3: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=25210 mm3  (~31.3 g PLA)  80.0 x 80.0 x 39.6 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 39.6, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=28.3, Aussenwand bis 16.7 mm von der Mitte
+  Baum B: Kabelmitten bei y=45.7, Aussenwand bis 22.7 mm von der Mitte
+  A1: Kabel 4 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.9 mm nach innen gebogen)
+  A2: Kabel 6 mm, Boden z=9.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 4.9 mm nach innen gebogen)
+  A3: Kabel 4 mm, Boden z=17.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 3.3 mm nach innen gebogen)
+  B1: Kabel 10 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  B2: Kabel 10 mm, Boden z=15.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  B3: Kabel 10 mm, Boden z=27.4: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -335,22 +197,13 @@
   Etagen | Kreisverkehr                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kreisverkehr | Etagen                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Doppeldecker_A4-10_B10mm ==
-  Etagenkachel                 gueltig=True  V=24409 mm3  (~30.3 g PLA)  80.0 x 80.0 x 21.4 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 21.4, Schraube mittig
-  Baum A: 19.2 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 4 mm, Spurmitte y=21.6, Boden z=3.0, Bord 1.50 mm
-    A1: Kabel 4 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (35.0 mm3)
-  Fenster gemessen 3.60 mm (Ziel 3.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 31 Grad gegen die Platte geneigt
-  A2: Kabel 10 mm, Spurmitte y=28.2, Boden z=9.2, Bord 1.46 mm
-    A2: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (61.9 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    A2: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
-  Baum B: 15.6 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 10 mm, Spurmitte y=43.8, Boden z=3.0, Bord 1.46 mm
-    B1: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (61.9 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=20395 mm3  (~25.3 g PLA)  80.0 x 80.0 x 21.4 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 21.4, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=26.3, Aussenwand bis 20.4 mm von der Mitte
+  Baum B: Kabelmitten bei y=45.7, Aussenwand bis 19.6 mm von der Mitte
+  A1: Kabel 4 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 5.1 mm nach innen gebogen)
+  A2: Kabel 10 mm, Boden z=9.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
+  B1: Kabel 10 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -358,17 +211,11 @@
   Etagen | Kreisverkehr                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kreisverkehr | Etagen                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Doppeldecker_A0_B8-8mm ==
-  Etagenkachel                 gueltig=True  V=23395 mm3  (~29.0 g PLA)  80.0 x 80.0 x 23.4 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 23.4, Schraube mittig
-  Baum B: 18.0 mm von der Mitte bis zum aeusseren Bord
-  B1: Kabel 8 mm, Spurmitte y=47.2, Boden z=3.0, Bord 1.45 mm
-    B1: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (56.6 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    B1: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
-  B2: Kabel 8 mm, Spurmitte y=42.8, Boden z=13.2, Bord 1.45 mm
-    B2: Kabel 8 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (53.5 mm3)
-  Fenster gemessen 7.60 mm (Ziel 7.60) -> Kabel muss 0.40 mm nachgeben
-    B2: Einfuehrweg frei=True (0.000 mm3), 22 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=19574 mm3  (~24.3 g PLA)  80.0 x 80.0 x 23.4 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 23.4, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum B: Kabelmitten bei y=44.7, Aussenwand bis 18.7 mm von der Mitte
+  B1: Kabel 8 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
+  B2: Kabel 8 mm, Boden z=13.2: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 6.5 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -376,13 +223,10 @@
   Etagen | Kreisverkehr                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Kreisverkehr | Etagen                    Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
 == Einfach_A10_B0mm ==
-  Etagenkachel                 gueltig=True  V=18784 mm3  (~23.3 g PLA)  80.0 x 80.0 x 15.2 mm
-  Kachel 72.0 x 72.0 mm, Bauhoehe 15.2, Schraube mittig
-  Baum A: 15.6 mm von der Mitte bis zum aeusseren Bord
-  A1: Kabel 10 mm, Spurmitte y=28.2, Boden z=3.0, Bord 1.46 mm
-    A1: Kabel 10 mm frei=True (0.000 mm3), senkrecht raus blockiert=True (61.9 mm3)
-  Fenster gemessen 9.60 mm (Ziel 9.60) -> Kabel muss 0.40 mm nachgeben
-    A1: Einfuehrweg frei=True (0.000 mm3), 20 Grad gegen die Platte geneigt
+  Etagenkachel                 gueltig=True  V=17855 mm3  (~22.1 g PLA)  80.0 x 80.0 x 15.2 mm
+  Kachel 72.0 x 72.0 mm, Bauhoehe 15.2, Gang in der Mitte 8.6 mm, Schraube mittig im Gang
+  Baum A: Kabelmitten bei y=26.3, Aussenwand bis 19.6 mm von der Mitte
+  A1: Kabel 10 mm, Boden z=3.0: frei=True, haelt=True, gefangen (innen+aussen)=True, einlegen aussen=True, mitte=True (dabei 8.1 mm nach innen gebogen)
   Etagen | Kachel6 (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
   Etagen / Kachel6 (y)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
   Kachel6 | Etagen (x)                     Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 0.5 mm3)
@@ -400,17 +244,17 @@
   Dreidecker464|10 / Dreidecker10 (y)      Ueberschneidung 0.000 mm3, Luft Klammer 0.20 mm, rastet (0,5 mm auseinander -> 1.1 mm3)
 == STL ==
   01_Kabelkachel_4mm_2spur_print.stl: 31548 Facetten, 21 g, Ueberhang >46 Grad: z=7.4: 115 mm2, z=7.5: 8 mm2, z=7.6: 1 mm2
-  02_Doppeldecker_4mm_print.stl: 110550 Facetten, 27 g, Ueberhang >46 Grad: z=7.4: 129 mm2, z=7.5: 12 mm2, z=7.6: 1 mm2, z=13.6: 110 mm2, z=13.7: 7 mm2, z=13.8: 1 mm2
-  03_Dreidecker_4mm_print.stl: 163574 Facetten, 35 g, Ueberhang >46 Grad: z=7.4: 129 mm2, z=7.5: 12 mm2, z=7.6: 1 mm2, z=13.6: 129 mm2, z=13.7: 12 mm2, z=13.8: 1 mm2, z=19.8: 110 mm2, z=19.9: 7 mm2, z=20.0: 1 mm2
+  02_Doppeldecker_4mm_print.stl: 5462 Facetten, 23 g, Ueberhang >46 Grad: z=7.4: 91 mm2, z=7.5: 8 mm2, z=7.6: 1 mm2, z=13.6: 77 mm2, z=13.7: 5 mm2, z=13.8: 1 mm2
+  03_Dreidecker_4mm_print.stl: 6350 Facetten, 25 g, Ueberhang >46 Grad: z=7.4: 91 mm2, z=7.5: 8 mm2, z=7.6: 1 mm2, z=13.6: 91 mm2, z=13.7: 8 mm2, z=13.8: 1 mm2, z=19.8: 77 mm2, z=19.9: 5 mm2, z=20.0: 1 mm2
   04_Kabelkachel_6mm_2spur_print.stl: 31474 Facetten, 22 g, Ueberhang >46 Grad: z=9.4: 167 mm2, z=9.5: 6 mm2
-  05_Doppeldecker_6mm_print.stl: 110518 Facetten, 30 g, Ueberhang >46 Grad: z=9.4: 198 mm2, z=9.5: 12 mm2, z=9.6: 1 mm2, z=17.6: 169 mm2, z=17.7: 6 mm2
-  06_Dreidecker_6mm_print.stl: 163542 Facetten, 42 g, Ueberhang >46 Grad: z=9.4: 198 mm2, z=9.5: 12 mm2, z=9.6: 1 mm2, z=17.6: 198 mm2, z=17.7: 12 mm2, z=17.8: 1 mm2, z=25.8: 169 mm2, z=25.9: 6 mm2
+  05_Doppeldecker_6mm_print.stl: 5486 Facetten, 24 g, Ueberhang >46 Grad: z=9.4: 140 mm2, z=9.5: 8 mm2, z=9.6: 1 mm2, z=17.6: 122 mm2, z=17.7: 4 mm2
+  06_Dreidecker_6mm_print.stl: 6374 Facetten, 27 g, Ueberhang >46 Grad: z=9.4: 140 mm2, z=9.5: 8 mm2, z=9.6: 1 mm2, z=17.6: 140 mm2, z=17.7: 8 mm2, z=17.8: 1 mm2, z=25.8: 122 mm2, z=25.9: 4 mm2
   07_Kabelkachel_8mm_2spur_print.stl: 31500 Facetten, 23 g, Ueberhang >46 Grad: z=11.4: 226 mm2, z=11.5: 5 mm2
-  08_Doppeldecker_8mm_print.stl: 110550 Facetten, 33 g, Ueberhang >46 Grad: z=11.4: 267 mm2, z=11.5: 12 mm2, z=11.6: 1 mm2, z=21.6: 238 mm2, z=21.7: 6 mm2
-  09_Dreidecker_8mm_print.stl: 163574 Facetten, 50 g, Ueberhang >46 Grad: z=11.4: 267 mm2, z=11.5: 12 mm2, z=11.6: 1 mm2, z=21.6: 267 mm2, z=21.7: 12 mm2, z=21.8: 1 mm2, z=31.8: 238 mm2, z=31.9: 6 mm2
+  08_Doppeldecker_8mm_print.stl: 5486 Facetten, 26 g, Ueberhang >46 Grad: z=11.4: 188 mm2, z=11.5: 8 mm2, z=11.6: 1 mm2, z=21.6: 170 mm2, z=21.7: 4 mm2
+  09_Dreidecker_8mm_print.stl: 6374 Facetten, 30 g, Ueberhang >46 Grad: z=11.4: 188 mm2, z=11.5: 8 mm2, z=11.6: 1 mm2, z=21.6: 188 mm2, z=21.7: 8 mm2, z=21.8: 1 mm2, z=31.8: 170 mm2, z=31.9: 4 mm2
   10_Kabelkachel_10mm_2spur_print.stl: 31482 Facetten, 24 g, Ueberhang >46 Grad: z=13.4: 284 mm2, z=13.5: 5 mm2
-  11_Doppeldecker_10mm_print.stl: 110550 Facetten, 37 g, Ueberhang >46 Grad: z=13.4: 336 mm2, z=13.5: 12 mm2, z=13.6: 1 mm2, z=25.6: 307 mm2, z=25.7: 6 mm2
-  12_Dreidecker_10mm_print.stl: 163574 Facetten, 58 g, Ueberhang >46 Grad: z=13.4: 336 mm2, z=13.5: 12 mm2, z=13.6: 1 mm2, z=25.6: 336 mm2, z=25.7: 12 mm2, z=25.8: 1 mm2, z=37.8: 307 mm2, z=37.9: 6 mm2
+  11_Doppeldecker_10mm_print.stl: 5486 Facetten, 28 g, Ueberhang >46 Grad: z=13.4: 237 mm2, z=13.5: 8 mm2, z=13.6: 1 mm2, z=25.6: 219 mm2, z=25.7: 4 mm2
+  12_Dreidecker_10mm_print.stl: 6374 Facetten, 33 g, Ueberhang >46 Grad: z=13.4: 237 mm2, z=13.5: 8 mm2, z=13.6: 1 mm2, z=25.6: 237 mm2, z=25.7: 8 mm2, z=25.8: 1 mm2, z=37.8: 219 mm2, z=37.9: 4 mm2
   13_Kreisverkehr_bis10mm_print.stl: 4250 Facetten, 31 g, Ueberhang >46 Grad: keiner
   14_Leerkachel_print.stl: 2062 Facetten, 19 g, Ueberhang >46 Grad: keiner
 Modul + Makro -> FreeCAD-Makro-Ordner
